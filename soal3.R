@@ -1,4 +1,3 @@
-
 # a.
 cat("a. H0: μd = 0\n")
 cat("   H1: μd ≠ 0\n")
@@ -31,7 +30,7 @@ cat("critical value=", critical_value, "\n")
 
 # e.
 cat("e.")
-cat("t berada diluar rejection zone sehingga tidak menolak H0\n")
+cat("t berada diluar rejection region sehingga tidak menolak H0 (Terima H0)\n")
 
 # f.
 cat("f. kesimpulan: tidak terdapat perbedaan signifikan antara mean saham bandung dengan mean saham bali")
