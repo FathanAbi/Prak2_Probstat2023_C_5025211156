@@ -24,10 +24,12 @@ interaction.plot(x.factor = data$Temp, trace.factor =
 
 # b. 
 cat("b.\n")
-model <- aov(Light ~ Glass + Temp, data=data)
-res <- anova(model)
-print(res)
-cat("\n")
+res.aov2 <- aov(Light ~ Temp + Glass, data = data)
+summary <- summary(res.aov2)
+print(summary)
+
+cat("\ndidapat nilai p  temp adalah 1.96e-10 (signifikan)\ndan nilai p glass adalah 0.0109 (signifikan)")
+cat("\n\n")
 
 #c
 cat("c.\n")
