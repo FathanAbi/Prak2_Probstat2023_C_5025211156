@@ -179,4 +179,75 @@ cat("f. kesimpulan: tidak terdapat perbedaan signifikan antara mean saham bandun
 ## Output
 ![image](https://github.com/FathanAbi/Prak2_Probstat2023_C_5025211156/assets/90834092/28e5ae31-1104-4bed-8f17-b37f0e130bdc)
 
-# soal4
+# SOAL4
+ Data yang digunakan merupakan hasil eksperimen yang dilakukan untuk 
+mengetahui pengaruh suhu operasi (100˚C, 125˚C dan 150˚C) dan tiga jenis kaca 
+pelat muka (A, B dan C) pada keluaran cahaya tabung osiloskop. Percobaan 
+dilakukan sebanyak 27 kali dan didapat data sebagai berikut: 
+https://drive.google.com/file/d/1pICtCrf61DRU86LDPQDJmcKiUMVt9ht4/view. 
+Dengan data tersebut:
+
+## Poin A
+Buatlah plot sederhana untuk visualisasi data.
+```R
+# a. 
+cat("a. \n\n")
+data <- read.csv("C:\\Users\\abika\\Downloads\\GTL.csv")
+
+
+data$Temp <- factor(data$Temp,
+                       levels = c(100, 125, 150),
+                       labels = c("T100", "T125", "T150"))
+
+data$Glass <- factor(data$Glass,
+                    levels = c("A", "B", "C"),
+                    labels = c("GA", "GB", "GC"))
+
+
+table(data$Glass, data$Temp)
+
+interaction.plot(x.factor = data$Temp, trace.factor =
+                    data$Glass,
+                  response = data$Light, fun = mean,
+                  type = "b", legend = TRUE,
+                  xlab = "Temp", ylab="Light",
+                  pch=c(1,19), col = c("#00AFBB", "#E7B800"))
+```
+ubah temp dan glass menajadi faktor. gunakan interaction.plot() unutuk men-plot data
+
+## Poin B
+Lakukan uji ANOVA dua arah
+```R
+# b. 
+cat("b.\n")
+res.aov2 <- aov(Light ~ Temp + Glass, data = data)
+summary <- summary(res.aov2)
+print(summary)
+
+cat("\ndidapat nilai p  temp adalah 1.96e-10 (signifikan)\ndan nilai p glass adalah 0.0109 (signifikan)")
+cat("\n\n")
+```   
+gunakan res.aov2 untuk melakukan anova 2 arah. lalu print sumarry nya
+
+## Poin C
+Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap 
+perlakuan (kombinasi kaca pelat muka dan suhu operasi)
+```R
+#c
+cat("c.\n")
+result <- aggregate(Light ~ Glass + Temp, data = data, FUN = function(x) c(mean = mean(x), sd = sd(x)))
+print(result)
+```
+gunakan fungsi agregate untuk mengelompokkan kolom "light" dengan faktor "Glass" dan "Temp". specify FUN argumen sebagai
+function untuk menghitung mean (mean()) dan standard deviation (sd())
+
+## Output
+plot:
+
+![image](https://github.com/FathanAbi/Prak2_Probstat2023_C_5025211156/assets/90834092/728f7d5f-94cf-4a39-92be-c38ed11bb4bd)
+
+output:
+
+![image](https://github.com/FathanAbi/Prak2_Probstat2023_C_5025211156/assets/90834092/473e1290-8b9d-45aa-9d9a-40511ed91a63)
+
+
