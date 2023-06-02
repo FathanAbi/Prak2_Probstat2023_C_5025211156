@@ -22,6 +22,3 @@ cat("c.p_value adalah", p_value, "dimana < level signifikan. kesimpulan yang bis
 cat("ditarik adalah menolak H0, atau ada pengaruh yang signifikan secara statitiska")
 cat("dalam hal kadar saturasi oksigen sebelum dan sesudah melakukan aktivitas 𝐴")
 
-
-
-
